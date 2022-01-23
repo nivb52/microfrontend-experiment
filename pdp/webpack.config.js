@@ -46,7 +46,9 @@ module.exports = {
       remotes: {
         home: "home@http://localhost:8080/remoteEntry.js",
       },
-      exposes: {},
+      exposes: {
+        './PDPContent':'./src/PDPContent.jsx'
+      },
       shared: {
         ...deps,
         react: {
