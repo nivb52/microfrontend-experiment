@@ -1,6 +1,8 @@
 import React, {Suspense} from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import "remixicon/fonts/remixicon.css";
 import "./index.scss";
 
 import SafeComponent from "./SafeComponent";
