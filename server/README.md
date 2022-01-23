@@ -24,6 +24,19 @@ Use the `/auth/login` route to login.
 ```
 $ # POST /auth/login
 $ curl -X POST http://localhost:4000/auth/login -d '{"username": "maria", "password": "123"}' -H "Content-Type: application/json"
+
+on windows (copy/paste) when (curl -> Invoke-RestMethod)
+```
+# set var 
+$Uri = 'http://localhost:4000/auth/login'
+$Body= @{
+    username = "maria"
+    password = "123"
+}
+
+$ curl -Method 'Post' -Uri $Uri -Body $Body -OutFile output_bearer_code.txt
+```
+
 $ # result -> {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2Vybm... }
 ```
 
@@ -33,4 +46,13 @@ Send the JWT to authorized routes using the `Authorization` header and prefixing
 $ # GET /profile using access_token returned from previous step as bearer code
 $ curl http://localhost:4000/authorized -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2Vybm..."
 $ # result -> {"userId":2}
+```
+on windows (copy/paste) when (curl -> Invoke-RestMethod)
+```
+# set var 
+$headers = @{'Authorization' = "
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+# ^ copy paste from the file from previous file
+
+$ curl -Method POST -Uri http://localhost:4000/cart -Headers $headers
 ```
