@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "cart:start": "npm run start:live --prefix ./cart",
-    "home:start": "npm run start:live --prefix ./home",
-    "pdp:start": "npm run start:live --prefix ./pdp",
-    "server:start": "npm run start:live --prefix ./server",
-    "start": "concurrently --kill-others \"npm run cart:start\" \"npm run home:start\" \"npm run pdp:start\" \"npm run server:start\""
+    "startcart": "npm run start:live --prefix ./cart",
+    "start:home": "npm run start:live --prefix ./home",
+    "start:pdp": "npm run start:live --prefix ./pdp",
+    "start:server": "npm run start:live --prefix ./server",
+    "start": "concurrently --kill-others \"npm run start:cart\" \"npm run start:home\" \"npm run start:pdp\" \"npm run start:server\"",
+    "install:cart": "cd ./cart && pnpm install",
+    "install:home": "cd ./home && pnpm install",
+    "install:pdp": "cd ./pdp && pnpm install",
+    "install:server": "cd ./server && pnpm install",
+    "install": "concurrently --kill-others \"npm run install:cart\" \"npm run install:home\" \"npm run install:pdp\" \"npm run install:server\"",
+    "first_deploy": "npm install -g pnpm && i pnpm i concurrently --D"
   },
   "repository": {
     "type": "git",
