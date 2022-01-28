@@ -3,13 +3,13 @@ import { useLoggedIn } from './hooks/useLogin';
 import { login } from './services/login.service';
 
 export default function Login() {
-    const loggedIn = useLoggedIn()
-    
-    const [showLogin, setShowLogin] = useState(false);
-    const [username, setUsername] = useState('sally');
-    const [password, setPassword] = useState('123');
+  const loggedIn = useLoggedIn();
 
-    if (loggedIn) return null;
+  const [showLogin, setShowLogin] = useState(false);
+  const [username, setUsername] = useState("sally"); // in our sample user data
+  const [password, setPassword] = useState("123"); // in our sample user data
+
+  if (loggedIn) return null;
 
   return (
     <>
