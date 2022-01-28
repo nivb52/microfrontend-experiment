@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getCart, clearCart, cart } from "./services/cart.service";
 import { currency } from "home/productsService";
 
@@ -13,7 +13,12 @@ export default function MiniCart() {
       unsubscribe()
         setCartItems([]);
     };
+    }, []);
+  
+  const clearCartUi = useCallback(() => {
+    clearCart().catch((err) => console.log(err)).then(setShowCart(false));
   }, []);
+  
 
   if (!cartItems) return null;
   return (
@@ -30,7 +35,7 @@ export default function MiniCart() {
             style={{
               width: 300,
               top: "2rem",
-            //   left: -250,
+              //   left: -250,
             }}
           >
             <div
@@ -49,7 +54,16 @@ export default function MiniCart() {
                   </div>
                 </React.Fragment>
               ))}
-             
+              <div></div>
+              <div></div>
+              <div></div>
+              {currency.format(
+                cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
+              )}
+            </div>
+            <div className="flex justify-end">
+              <button className="bg-white border border-green-800 text-green-800 p-2 rounded-lg" onClick={clearCartUi}>
+                Clear Cart </button>
             </div>
           </div>
         </>
