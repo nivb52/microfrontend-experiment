@@ -49,7 +49,13 @@ module.exports = {
         // MF supports self reference
         cart: "cart@http://localhost:8082/remoteEntry.js",
       },
-      exposes: {},
+      exposes: {
+        "./cart.service": "./src/services/cart.service.js",
+        "./login.service": "./src/services/login.service.js",
+        "./Login": "./src/Login.jsx",
+        "./MiniCart": "./src/MiniCart.jsx",
+        "./CartContent": "./src/CartContent.jsx",
+      },
       shared: {
         ...deps,
         react: {
