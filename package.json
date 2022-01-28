@@ -1,0 +1,23 @@
+{
+  "name": "freecoding-microfrontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cart:start": "npm run start:live --prefix ./cart",
+    "home:start": "npm run start:live --prefix ./home",
+    "pdp:start": "npm run start:live --prefix ./pdp",
+    "server:start": "npm run start:live --prefix ./server",
+    "start": "concurrently --kill-others \"npm run cart:start\" \"npm run home:start\" \"npm run pdp:start\" \"npm run server:start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nivb52/microfrontend-experiment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nivb52/microfrontend-experiment/issues"
+  },
+  "homepage": "https://github.com/nivb52/microfrontend-experiment#readme"
+}
