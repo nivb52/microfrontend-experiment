@@ -14,7 +14,7 @@
     "install:pdp": "cd ./pdp && pnpm install",
     "install:server": "cd ./server && pnpm install",
     "install": "concurrently --kill-others \"npm run install:cart\" \"npm run install:home\" \"npm run install:pdp\" \"npm run install:server\"",
-    "first_deploy": "npm install -g pnpm && i pnpm i concurrently --D"
+    "first_deploy": "npm install -g pnpm && pnpm i concurrently -D"
   },
   "repository": {
     "type": "git",
