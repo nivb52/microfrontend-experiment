@@ -1,10 +1,11 @@
-import { cartObservable } from "../store/singelton.observers";
+// import { cartObservable } from "@store/observers";
+import { cartSubject } from "./internal_store/singletons";
 import { API_SERVER } from "../config";
 import { jwt } from "./login.service";
 
-export const cart = cartObservable;
+export const cart = cartSubject//.asObservable();
 
-cart.subscribe((c) => console.log(c));
+cart.subscribe((c) => console.log('first subscriber: ', c));
 
 const makeHeaders = () => ({
     "Content-Type": "application/json",
@@ -18,8 +19,8 @@ export const getCart = () =>
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(cart);
-      cart.next(data.cartItems);
+      console.log("getCart: ", data);
+      cartSubject.next(data.cartItems);
       return data;
     })
     .catch((err) => console.error(err) /*@todo popup error message*/);
@@ -49,7 +50,7 @@ export const clearCart = () =>
     })
     .then((res) => res.json())
     .then((res) => {
-      if (!res.success) {
+      if (!res || !res.cartItems) {
         throw new Error(res.message);
       } else {
         getCart();
