@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
+const { microeFrontends } = require("../config.project");
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
@@ -44,9 +45,9 @@ module.exports = {
       name: "home",
       filename: "remoteEntry.js",
       remotes: {
-        home: "home@http://localhost:8080/remoteEntry.js",
-        pdp: "pdp@http://localhost:8081/remoteEntry.js",
-        cart: "cart@http://localhost:8082/remoteEntry.js",
+        home: `home@http://localhost:${microeFrontends.home.port}/remoteEntry.js`,
+        pdp: `pdp@http://localhost:${microeFrontends.pdp.port}/remoteEntry.js`,
+        cart: `cart@http://localhost:${microeFrontends.cart.port}/remoteEntry.js`,
       },
       exposes: {
         "./Header": "./src/Header.jsx",
@@ -54,6 +55,13 @@ module.exports = {
         "./products.service": "./src/services/products.js",
       },
       shared: {
+        // "@store/observers": {
+        //   singleton: true,
+        //   import: "../libs/store/singelton.observers.js",
+        //   strictVersion: false,
+        //   version: "1.0.0",
+        //   requiredVersion: "^1.0.0",
+        // },
         ...deps,
         react: {
           singleton: true,
@@ -62,6 +70,10 @@ module.exports = {
         "react-dom": {
           singleton: true,
           requiredVersion: deps["react-dom"],
+        },
+        rxjs: {
+          singleton: true,
+          requiredVersion: deps.rxjs,
         },
       },
     }),
