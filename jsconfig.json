@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@store/observers": [
+                "./libs/store/singelton.observers.js"
+            ]
+        }
+    }
+}
