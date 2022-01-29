@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { getCart, clearCart, cart } from "./services/cart.service";
-import { currency } from "home/productsService";
+import { currency } from "home/products.service";
 
-export default function MiniCart() {
+export default function MiniCart({ style = {} }) {
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
-    useEffect(() => {
-    const unsubscribe =  cart.subscribe((c) => setCartItems(cart.value));
-        
+  useEffect(() => {
+    const unsubscribe = cart.subscribe((c) => setCartItems(cart.value));
+
     return () => {
-      unsubscribe()
-        setCartItems([]);
+      unsubscribe();
+      setCartItems([]);
     };
-    }, []);
-  
-  const clearCartUi = useCallback(() => {
-    clearCart().catch((err) => console.log(err)).then(setShowCart(false));
   }, []);
-  
+
+  const clearCartUi = useCallback(() => {
+    clearCart()
+      .catch((err) => console.log(err))
+      .then(setShowCart(false));
+  }, []);
 
   if (!cartItems) return null;
   return (
@@ -34,8 +35,8 @@ export default function MiniCart() {
             className="absolute p-5 border-4 border-blue-800 bg-white rounded-xl text-black"
             style={{
               width: 300,
-              top: "2rem",
-              //   left: -250,
+              right: "8px",
+              ...style,
             }}
           >
             <div
@@ -61,9 +62,21 @@ export default function MiniCart() {
                 cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
               )}
             </div>
-            <div className="flex justify-end">
-              <button className="bg-white border border-green-800 text-green-800 p-2 rounded-lg" onClick={clearCartUi}>
-                Clear Cart </button>
+            <div className="flex justify-around">
+              <button
+                className="bg-white border border-green-800 text-green-800 p-2 rounded-lg"
+                onClick={clearCartUi}
+                style={{ fontSize: "clamp(0.5rem, 0.1rem + 2vmin, 2rem)" }}
+              >
+                Clear Cart
+              </button>
+              <button
+                className="text-white border border-green-800 bg-green-800 p-2 rounded-lg"
+                onClick={clearCartUi}
+                style={{ fontSize: "clamp(0.5rem, 0.1rem + 2vmin, 2rem)" }}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         </>

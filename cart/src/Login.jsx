@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useLoggedIn } from './hooks/useLogin';
 import { login } from './services/login.service';
 
-export default function Login() {
+export default function Login({ style = {}}) {
   const loggedIn = useLoggedIn();
 
   const [showLogin, setShowLogin] = useState(false);
@@ -22,7 +22,7 @@ export default function Login() {
           style={{
             width: "clamp(200px,100px + 10vmin ,25vmin)",
             top: "4rem",
-            left: 0,
+            ...style
           }}
         >
           <input
