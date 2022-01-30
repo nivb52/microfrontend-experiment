@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { getProductById, currency } from "home/productsService";
+import { getProductById, currency } from "home/products.service";
 import { useParams } from 'react-router-dom';
 export default function PDPContent() {
   const { id } = useParams();
