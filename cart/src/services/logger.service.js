@@ -1,3 +1,4 @@
+// @todo: implenment it in shared libs
 export const Logger = (function (w) {
   var Logger;
 

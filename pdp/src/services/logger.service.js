@@ -1,8 +1,9 @@
+// @todo: implenment it in shared libs
 export const Logger = (function (w) {
   var Logger;
 
   Logger = function () {
-      this.console = w.console;
+    this.console = w.console;
   };
 
   Logger.prototype.log = function (message) {
