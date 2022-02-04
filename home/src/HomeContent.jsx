@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getProducts, currency } from "./services/products";
+import { getProducts, currency } from "./services/products.service";
 import { useLoggedIn } from "cart/hooks.useLogin";
 import { addToCart } from "cart/cart.service"
 export default function HomeContent() {
