@@ -52,7 +52,7 @@ module.exports = {
       exposes: {
         "./Header": "./src/Header.jsx",
         "./Footer": "./src/Footer.jsx",
-        "./products.service": "./src/services/products.js",
+        "./products.service": "./src/services/products.service.js",
       },
       shared: {
         // "@store/observers": {
