@@ -2,7 +2,6 @@
 import { cartSubject } from "./internal_store/singletons";
 import { API_SERVER } from "../config";
 import { jwt } from "./login.service";
-import { Logger } from "./logger.service"; // the home page team not implemented yet Logger Class
 
 export const cart = cartSubject//.asObservable();
 
