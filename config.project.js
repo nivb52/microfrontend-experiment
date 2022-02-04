@@ -9,5 +9,8 @@ module.exports = {
     cart: {
       port: 8082,
     },
+  },
+  api_server: {
+    port: 4000,
   }
 };
