@@ -2,10 +2,12 @@
 import { cartSubject } from "./internal_store/singletons";
 import { API_SERVER } from "../config";
 import { jwt } from "./login.service";
+import { Logger } from "./logger.service"; // the home page team not implemented yet Logger Class
 
 export const cart = cartSubject//.asObservable();
 
-cart.subscribe((c) => console.log('first subscriber: ', c));
+const logger = new Logger();
+cart.subscribe((c) => logger.info("first subscriber: ", c));
 
 const makeHeaders = () => ({
     "Content-Type": "application/json",
@@ -19,11 +21,11 @@ export const getCart = () =>
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("getCart: ", data);
+      logger.info("getCart: ", data);
       cartSubject.next(data.cartItems);
       return data;
     })
-    .catch((err) => console.error(err) /*@todo popup error message*/);
+    .catch((err) => logger.error(err) /*@todo popup error message*/);
 
 export const addToCart = (productId) =>
   fetch(`${API_SERVER}/cart`, {
