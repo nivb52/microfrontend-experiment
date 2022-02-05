@@ -49,7 +49,10 @@ module.exports = {
         // pdp: `pdp@http://localhost:${microeFrontends.pdp.port}/remoteEntry.js`,
         cart: `cart@http://localhost:${microeFrontends.cart.port}/remoteEntry.js`,
       },
-      exposes: {},
+      exposes: {
+        // "./addToCartCmp": "./src/addToCartCmp.jsx",
+        "./placeAddToCart": "./src/placeAddToCart.js",
+      },
       shared: {
         ...deps,
         "solid-js": {
