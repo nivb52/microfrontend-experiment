@@ -8,7 +8,7 @@ export default function Header() {
       <div className="flex">
         <div className="flex-grow">Fidget Spinner World</div>
         <div className="flex-end relative">
-          <Suspense fallback="">
+          <Suspense fallback={<span>Loading ...</span>}>
             <MiniCart />
             <Login />
           </Suspense>
