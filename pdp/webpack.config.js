@@ -48,6 +48,7 @@ module.exports = {
         home: `home@http://localhost:${microeFrontends.home.port}/remoteEntry.js`,
         pdp: `pdp@http://localhost:${microeFrontends.pdp.port}/remoteEntry.js`,
         cart: `cart@http://localhost:${microeFrontends.cart.port}/remoteEntry.js`,
+        addtocart: `addtocart@http://localhost:${microeFrontends.addtocart.port}/remoteEntry.js`,
       },
       exposes: {
         "./PDPContent": "./src/PDPContent.jsx",
