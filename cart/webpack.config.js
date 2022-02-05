@@ -6,7 +6,7 @@ const deps = require("./package.json").dependencies;
 module.exports = {
   devtool: "eval-cheap-source-map",
   output: {
-    publicPath: "http://localhost:8082/",
+    publicPath: `http://localhost:${microeFrontends.cart.port}/`,
   },
 
   resolve: {
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 8082,
+    port: microeFrontends.cart.port,
     historyApiFallback: true,
   },
 

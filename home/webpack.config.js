@@ -5,7 +5,7 @@ const { microeFrontends } = require("../config.project");
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:8080/",
+    publicPath: `http://localhost:${microeFrontends.home.port}/`,
   },
 
   resolve: {
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 8080,
+    port: microeFrontends.home.port,
     historyApiFallback: true,
   },
 

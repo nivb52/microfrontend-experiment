@@ -5,7 +5,7 @@ const {microeFrontends} = require("../config.project");
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:8081/",
+    publicPath: `http://localhost:${microeFrontends.pdp.port}/`,
   },
 
   resolve: {
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 8081,
+    port: microeFrontends.pdp.port,
     historyApiFallback: true,
   },
 
@@ -54,11 +54,11 @@ module.exports = {
       },
       shared: {
         // "@store/observers": {
-          // singleton: true,
-          // import: "../libs/store/singelton.observers.js",
-          //   strictVersion: false,
-          //   version: "1.0.0",
-          //   requiredVersion: "^1.0.0",
+        // singleton: true,
+        // import: "../libs/store/singelton.observers.js",
+        //   strictVersion: false,
+        //   version: "1.0.0",
+        //   requiredVersion: "^1.0.0",
         // },
         ...deps,
         react: {
