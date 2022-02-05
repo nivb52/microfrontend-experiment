@@ -3,17 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start:addtocart": "npm run start:live --prefix ./addtocart",
     "start:cart": "npm run start:live --prefix ./cart",
     "start:home": "npm run start:live --prefix ./home",
     "start:pdp": "npm run start:live --prefix ./pdp",
     "start:server": "npm run start:live --prefix ./server",
     "start": "concurrently --kill-others \"npm run start:cart\" \"npm run start:home\" \"npm run start:pdp\" \"npm run start:server\"",
-    "start:client": "concurrently --kill-others \"npm run start:cart\" \"npm run start:home\" \"npm run start:pdp\"",
+    "start:client:a": "concurrently --kill-others \"npm run start:cart\" \"npm run start:home\" \"npm run start:pdp\"",
+    "start:client": "concurrently --kill-others \"npm run start:addtocart\"  \"npm run start:cart\" \"npm run start:home\" \"npm run start:pdp\"",
+    "install:addtocart": "cd ./addtocart && pnpm install",
     "install:cart": "cd ./cart && pnpm install",
     "install:home": "cd ./home && pnpm install",
     "install:pdp": "cd ./pdp && pnpm install",
     "install:server": "cd ./server && pnpm install",
-    "install": "concurrently --kill-others \"npm run install:cart\" \"npm run install:home\" \"npm run install:pdp\" \"npm run install:server\"",
+    "install": "concurrently --kill-others \"npm run install:addtocart\" \"npm run install:cart\" \"npm run install:home\" \"npm run install:pdp\" \"npm run install:server\"",
     "first_deploy": "npm install -g pnpm && pnpm i concurrently -D"
   },
   "repository": {
