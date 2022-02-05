@@ -1,4 +1,4 @@
-const API_SERVER = "http://localhost:4000"; // @tood: move this to config file
+import { API_SERVER } from "../config"; // @tood: move this to shared config file
 
 export const getProducts = () =>
   fetch(`${API_SERVER}/products`)
