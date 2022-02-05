@@ -10,7 +10,9 @@ export default function MiniCart({ style = {} }) {
     const unsubscribe = cart.subscribe((c) => setCartItems(cart.value));
 
     return () => {
-      unsubscribe();
+      if (unsubscribe) {
+        unsubscribe();
+      }
       setCartItems([]);
     };
   }, []);
