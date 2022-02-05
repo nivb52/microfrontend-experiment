@@ -10,7 +10,7 @@ import "./index.scss";
 
 const App = () => (
   <div className="mx-auto max-w-6xl">
-    <Suspense fallback={<header class="mt-4"></header>}>
+    <Suspense fallback={<header className="mt-4"></header>}>
       <Header />
     </Suspense>
 
@@ -18,7 +18,7 @@ const App = () => (
       <CartContent className="mt-4 mb-4" />
     </Suspense>
 
-    <Suspense fallback={<footer class="mt-4"></footer>}>
+    <Suspense fallback={<footer className="mt-4"></footer>}>
       <Footer />
     </Suspense>
   </div>
