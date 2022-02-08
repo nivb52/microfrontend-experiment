@@ -1,6 +1,7 @@
 libs 
 # ignore for now
 
+personal-notes.txt
 .history
 # Logs
 logs
